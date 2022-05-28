@@ -5,7 +5,7 @@ package com.recipe.entity;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Recipe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int recipeId;
 
 	@Column
@@ -41,7 +41,7 @@ public class Recipe {
 
 	
     @Column
-    @JsonFormat
+    @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate created;
 
 	@Column
@@ -69,7 +69,7 @@ public class Recipe {
 		super();
 		
 		this.name = name;
-		this.created = created;
+		//this.created = created;
 		this.veg = veg;
 		this.servings = servings;
 		this.instructions = instructions;

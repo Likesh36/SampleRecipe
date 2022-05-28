@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Ingredients {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonIgnore
-	private int id;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	//@JsonIgnore
+	//private int id;
 	
 	@Column
 	private String ingredientsList;
@@ -37,7 +37,7 @@ public class Ingredients {
 
 
 
-
+/*
 	public int getId() {
 		return id;
 	}
@@ -45,7 +45,7 @@ public class Ingredients {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+*/
 	public String getIngredientsList() {
 		return ingredientsList;
 	}

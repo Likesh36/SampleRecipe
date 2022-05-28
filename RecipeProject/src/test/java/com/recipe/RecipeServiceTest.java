@@ -3,7 +3,7 @@ package com.recipe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+//import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -91,7 +91,7 @@ public class RecipeServiceTest {
 		listRecipe.add(recipe2);
 		
 		when(recipeRepository.findAll()).thenReturn(listRecipe);
-		assertEquals(listRecipe.size(), recipeService.recipesList().size());
+		assertEquals(listRecipe.size(), recipeService.getRecipesList().size());
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class RecipeServiceTest {
 		listRecipe.add(recipe2);
 		
 		when(recipeRepository.findAll()).thenReturn(listRecipe);
-		assertNotEquals(4, recipeService.recipesList().size());
+		assertNotEquals(4, recipeService.getRecipesList().size());
 	}
 	
 	@Test
