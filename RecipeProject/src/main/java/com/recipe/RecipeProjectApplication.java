@@ -1,5 +1,6 @@
 package com.recipe;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -11,7 +12,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.recipe.entity.Admin;
+import com.recipe.entity.Customer;
 import com.recipe.entity.User;
+import com.recipe.repository.IAdminRepository;
+import com.recipe.repository.ICustomerRepository;
 import com.recipe.repository.IUserRepository;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -34,10 +39,9 @@ public class RecipeProjectApplication {
 	public void initUsers()
 	{
 		   List<User> users = Stream.of(
-	                new User(101, "rahul", "rahulpassword", "irahul@gmail.com"),
-	                new User(102, "likesh", "likeshpassword", "rlikesh@gmail.com"),
-	                new User(103, "ramana", "ramanapassword", "sramana@gmail.com"),
-	                new User(104, "mohit", "mohitpassword", "lmohit@gmail.com")
+	                new Admin("likesh","likeshpassword","admin","Likesh","8889997722"),
+	                new Customer("krishna","krishnapassword","customer","Krishna","7779998811"),
+	                new Customer("customer1", "customer123", "customer", "customer1", "9988776655", "customer@gmail.com", LocalDate.of(1999, 8, 10), "male", "Indian")
 	        ).collect(Collectors.toList());
 	        userRepository.saveAll(users);
 	}

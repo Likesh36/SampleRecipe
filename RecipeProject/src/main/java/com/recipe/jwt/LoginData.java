@@ -2,6 +2,7 @@ package com.recipe.jwt;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class LoginData implements Serializable {
 
 	private String userName;

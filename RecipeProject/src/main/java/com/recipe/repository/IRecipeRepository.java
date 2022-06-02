@@ -14,7 +14,8 @@ import com.recipe.entity.Recipe;
 
 @Repository
 public interface IRecipeRepository extends JpaRepository<Recipe, Integer>{
-
+	
+	//Query for selecting recipeName by using findByName
 	@Query("SELECT r from Recipe r WHERE r.name=:name ")
 	 public Optional<Recipe> findByName(@Param("name") String name);
 

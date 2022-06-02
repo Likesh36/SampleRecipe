@@ -18,6 +18,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 
+@SuppressWarnings("serial")
 @Service
 public class JwtTokenUtil implements Serializable{
 
@@ -38,7 +39,7 @@ public class JwtTokenUtil implements Serializable{
 				.setClaims(claims)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis()+JWT_TOKEN_VALIDITY*1000))
-				.signWith(SignatureAlgorithm.HS256,secretKey)
+				.signWith(SignatureAlgorithm.HS512,secretKey)
 				.compact();
 	}
 	

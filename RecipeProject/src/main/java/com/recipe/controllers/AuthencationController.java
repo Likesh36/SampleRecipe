@@ -36,7 +36,7 @@ public class AuthencationController {
 	public AuthencationController() {
 		logger.log(Level.INFO,"-----> Inside Authentication Service Controller Working!");
 	}
-	//request for authorizing user by generating token from JwtTokenUtil class
+//request for authorizing user by generating token from JwtTokenUtil class
 	@PostMapping
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginData data) {
 

@@ -2,6 +2,7 @@ package com.recipe.jwt;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class TokenEntity implements Serializable {
 
 	private final String token;
