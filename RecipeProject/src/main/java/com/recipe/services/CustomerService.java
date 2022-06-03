@@ -18,8 +18,8 @@ public class CustomerService implements ICustomerService{
 	//saving a new customer by using the method save() of CrudRepository
 	@Override
 	public Customer addCustomer(Customer customer) {
-		customerRepository.save(customer);
-		return customer;
+		return customerRepository.save(customer);
+	
 	}
 	//updating the existing customer by using the method save() of CrudRepository
 	@Override

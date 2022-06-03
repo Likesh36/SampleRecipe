@@ -45,7 +45,7 @@ public class Customer extends User {
 
 	public Customer(String username, String password, String role, String customerName, String mobileNumber, String emailId,
 			LocalDate dateOfBirth, String gender, String nationality) {
-		super();
+		super(username,password,role);
 		this.customerName = customerName;
 		this.mobileNumber = mobileNumber;
 		this.emailId = emailId;

@@ -40,8 +40,8 @@ public class RecipeProjectApplication {
 	{
 		   List<User> users = Stream.of(
 	                new Admin("likesh","likeshpassword","admin","Likesh","8889997722"),
-	                new Customer("krishna","krishnapassword","customer","Krishna","7779998811"),
-	                new Customer("customer1", "customer123", "customer", "customer1", "9988776655", "customer@gmail.com", LocalDate.of(1999, 8, 10), "male", "Indian")
+	                //new Customer("krishna","krishnapassword","customer","Krishna","7779998811"),
+	                new Customer("ramana", "ramana123", "customer", "Ramana", "9988776655", "ramanak@gmail.com", LocalDate.of(1999, 8, 10), "male", "Indian")
 	        ).collect(Collectors.toList());
 	        userRepository.saveAll(users);
 	}

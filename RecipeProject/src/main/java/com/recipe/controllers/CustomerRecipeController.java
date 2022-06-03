@@ -23,6 +23,7 @@ import com.recipe.entity.Customer;
 //import com.recipe.entity.Customer;
 import com.recipe.entity.Recipe;
 import com.recipe.entity.User;
+import com.recipe.exception.CustomerNotFoundException;
 //import com.recipe.exception.CustomerNotFoundException;
 //import com.recipe.exception.InvalidUserException;
 import com.recipe.exception.RecipeNotFoundException;
@@ -111,12 +112,35 @@ public class CustomerRecipeController {
 			throw new RecipeNotFoundException("Recipe with name : " + recipeName + " is not found ");
 		}
 	}
-
+	
+//HTTP request to a server for registering new Customer
 	@PostMapping("/addCustomer")
-	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<?> addCustomer(@RequestBody Customer customer) throws CustomerNotFoundException{
 		//user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
+	
+		Optional<Customer> opt = userRepository.findByUsename(customer.getUsername());
 		
-		return new ResponseEntity<>(customerService.addCustomer(customer),HttpStatus.OK);
+		if (opt.isPresent()) {
+			
+			logger.info("Customer with user name {} is already exists ",customer.getUsername());
+			
+			throw new CustomerNotFoundException("Username already exists");
+		}
+		else {
+			customerService.addCustomer(customer);
+			
+			logger.info("New Customer registered successfully with username {}",customer.getUsername());
+			
+			return new ResponseEntity<>(" User registered Successfully ", HttpStatus.CREATED);
+			
+		}
 	}
 	
+//HTTP request to a server for retrieving all the customers from the list.
+	@GetMapping("/customers")
+	public ResponseEntity<List<Customer>> viewAllCustomers(HttpServletRequest request){
+		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
+		logger.info("Retrieved all the customers form the list");
+		return new ResponseEntity<>(customerService.getAllCustomers(),HttpStatus.OK);
+	}
 }
