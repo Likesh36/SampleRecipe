@@ -133,12 +133,5 @@ public class CustomerRecipeController {
 			
 		}
 	}
-	
-//HTTP request to a server for retrieving all the customers from the list.
-	@GetMapping("/customers")
-	public ResponseEntity<List<Customer>> viewAllCustomers(HttpServletRequest request){
-		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		logger.info("Retrieved all the customers form the list");
-		return new ResponseEntity<>(customerService.getAllCustomers(),HttpStatus.OK);
-	}
+
 }
