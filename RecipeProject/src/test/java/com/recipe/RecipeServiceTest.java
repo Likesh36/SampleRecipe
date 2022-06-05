@@ -18,8 +18,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+
+import com.recipe.entity.Customer;
 import com.recipe.entity.Recipe;
+
+import com.recipe.repository.ICustomerRepository;
 import com.recipe.repository.IRecipeRepository;
+import com.recipe.repository.IUserRepository;
+
+import com.recipe.services.ICustomerService;
 import com.recipe.services.IRecipeService;
 
 @SpringBootTest
@@ -27,19 +34,26 @@ public class RecipeServiceTest {
 	
 	@Autowired
 	IRecipeService recipeService;
+	@Autowired
+	ICustomerService customerService;
 	
 	@MockBean
 	IRecipeRepository recipeRepository;
+	@MockBean
+	IUserRepository userRepository;
+	@MockBean
+	ICustomerRepository customerRepository;
 	
 	public static Recipe recipe,recipe1,recipe2;
+
+	public static Customer customer,customer1,customer2;
 	
 	@BeforeAll
 	public static void setUp() {
 		recipe=new Recipe();
 		recipe1=new Recipe();
 		recipe2=new Recipe();
-		
-		
+				
 		recipe.setRecipeId(1);
 		recipe.setName("Chicken fry");
 		recipe.setCreated(LocalDate.now());
@@ -49,6 +63,7 @@ public class RecipeServiceTest {
 		recipe1.setName("Chicken Biryani");
 		recipe1.setCreated(LocalDate.now());
 		recipe1.setServings(6);
+		
 	}
 	
 	@Test
@@ -59,8 +74,6 @@ public class RecipeServiceTest {
 		assertNotNull(recipe);
 
 	}
-	
-	
 	@Test
 	@DisplayName("Positive Test case of create Recipe")
 	void createRecipeTest1() {
@@ -78,7 +91,6 @@ public class RecipeServiceTest {
 	assertNotEquals(recipe1, recipeService.addRecipe(recipe));
 		
 	}
-	
 	
 	@Test
 	@DisplayName("positive test case of get all Recipes")
@@ -131,7 +143,5 @@ public class RecipeServiceTest {
 		assertNotEquals(recipe2.toString(), recipe.toString());
 
 	}
-	
-	
 
 }

@@ -15,8 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
 import com.recipe.entity.Admin;
 import com.recipe.entity.Customer;
 import com.recipe.entity.User;
-import com.recipe.repository.IAdminRepository;
-import com.recipe.repository.ICustomerRepository;
 import com.recipe.repository.IUserRepository;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -40,7 +38,6 @@ public class RecipeProjectApplication {
 	{
 		   List<User> users = Stream.of(
 	                new Admin("likesh","likeshpassword","admin","Likesh","8889997722"),
-	                //new Customer("krishna","krishnapassword","customer","Krishna","7779998811"),
 	                new Customer("ramana", "ramana123", "customer", "Ramana", "9988776655", "ramanak@gmail.com", LocalDate.of(1999, 8, 10), "male", "Indian")
 	        ).collect(Collectors.toList());
 	        userRepository.saveAll(users);

@@ -1,7 +1,5 @@
 package com.recipe.controllers;
 
-import java.util.List;
-//import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +33,7 @@ import com.recipe.services.CustomerService;
 import com.recipe.services.IRecipeService;
 
 @RestController
-@RequestMapping("/recipe")
+@RequestMapping("/recipe/customer")
 public class CustomerRecipeController {
 
 	Logger logger = LoggerFactory.getLogger(CustomerRecipeController.class);
@@ -64,7 +62,7 @@ public class CustomerRecipeController {
 
 //HTTP request to a server for adding recipe.
 
-	@PostMapping("/customer/addRecipe")
+	@PostMapping("/addRecipe")
 	// The POST method is used when you want to send some data to the server.
 	public ResponseEntity<?> createRecipe(@RequestBody Recipe recipe, HttpServletRequest request)
 			throws RecipeNotFoundException {
@@ -88,7 +86,7 @@ public class CustomerRecipeController {
 
 //HTTP request to a server for retrieving recipe by recipeName.
 
-	@GetMapping("/customer/{recipeName}")
+	@GetMapping("/{recipeName}")
 	public ResponseEntity<?> getRecipeByName(@PathVariable("recipeName") String recipeName, HttpServletRequest request)
 			throws RecipeNotFoundException {
 

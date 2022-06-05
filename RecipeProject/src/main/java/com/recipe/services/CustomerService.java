@@ -24,7 +24,7 @@ public class CustomerService implements ICustomerService{
 	//updating the existing customer by using the method save() of CrudRepository
 	@Override
 	public Customer updateCustomer(int userId, Customer customer) throws CustomerNotFoundException {
-		customerRepository.findById(userId).orElseThrow(()->new CustomerNotFoundException("Customer detail not found !!!"));
+		customerRepository.findById(userId).orElseThrow(()->new CustomerNotFoundException("Customer detail not FOUND !!!"));
 		return customerRepository.save(customer);
 	}
 	//deleting the existing customer by userId using the method deleteById() of CrudRepository
